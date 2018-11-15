@@ -36,9 +36,11 @@ function domLoaded(event) {
 
 You'll be coding in `index.js`. In `index.js`, we need to set up a
 `DOMContentLoaded` event in order to detect when our HTML page has
-loaded, and the document is ready to be manipulated.
-
-(continue instructions here)
+loaded, and the document is ready to be manipulated. Use the event
+to target the paragraph with `id="text"` and replace the text with
+"This is really cool!" Once you have confirmed that this working by
+viewing the results in `index.html`, let's create a wrapper for this
+function called `domContentLoaded` and run the tests.
 
 ### Reiterate Separation of Concerns for JavaScript
 
