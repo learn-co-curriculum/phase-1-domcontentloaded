@@ -12,17 +12,24 @@ An important part of working with JavaScript is ensuring that your code
 runs at the right time. Every now and then, you may have to add some extra
 code to ensure your code doesn't run before the page is ready. There are
 many factors that go into determining the "right time". There are two
-events that represent the two milestones while your page loads. The
-`DOMContentLoaded` event fires at when your page's DOM is fully parsed.
-The `load` event fires once your page has _fully_ loaded. However, in
-this lesson, we'll be focusing on `DOMContentLoaded`.
+events that represent two important milestones in terms of page load:
+
+1. `DOMContentLoaded` event fires at when your page's DOM is fully parsed
+2. The `load` event fires when a resource and its dependent resources (CSS, JavaScript) have finished loading
+
+In this lesson, we'll be focusing on `DOMContentLoaded`.
 
 ## Why is DOMContentLoaded is Important?
 
 The browser has a built-in way to determine when a page is loaded. The
 `DOMContentLoaded` event is triggered when the page’s DOM is ready--or
 finished loading. This means style and HTML is ready to receive requests
-from JavaScript.
+from JavaScript. You can't bind events to HTML elements that haven't
+rendered yet. As such, we want to perform event binding only _after_
+we're sure the DOM...Content....has.....Loaded.
+
+As always, `addEventListener` takes a `String` with the name of the
+event and a _callback function_.
 
 ```js
 document.addEventListener("DOMContentLoaded", domLoaded, false);
