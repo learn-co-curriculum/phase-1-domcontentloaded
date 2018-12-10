@@ -35,7 +35,7 @@ event and a _callback function_.
 document.addEventListener("DOMContentLoaded", domLoaded, false);
 
 function domLoaded(event) {
-    alert("The DOM has loaded");
+  alert("The DOM has loaded");
 }
 ```
 
