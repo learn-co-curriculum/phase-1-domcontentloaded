@@ -63,6 +63,9 @@ ready to be manipulated. Use the event's callback function to target the
 paragraph element with `id="text"` and replace the text with "This is really
 cool!"
 
+_Note:_ Using the [`innerText`][innertext] property to modify DOM element
+content will not work for this lab. Use [`textContent`][textcontent] or [`innerHTML`][innerhtml] instead.
+
 Test your event in the browser to confirm that it is working.
 
 ## DOMContentLoaded Does Not Wait For Stylesheets and Images to Load
@@ -114,3 +117,5 @@ completely loads.
 
 [eventexample]: http://web.archive.org/web/20150405114023/http://ie.microsoft.com/testdrive/HTML5/DOMContentLoaded/Default.html
 [defer]: https://www.w3schools.com/tags/att_script_defer.asp
+[textcontent]: https://developer.mozilla.org/en-US/docs/Web/API/Node/textContent
+[innerhtml]: https://developer.mozilla.org/en-US/docs/Web/API/Element/innerHTML
