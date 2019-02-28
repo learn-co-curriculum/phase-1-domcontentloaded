@@ -117,5 +117,6 @@ completely loads.
 
 [eventexample]: http://web.archive.org/web/20150405114023/http://ie.microsoft.com/testdrive/HTML5/DOMContentLoaded/Default.html
 [defer]: https://www.w3schools.com/tags/att_script_defer.asp
+[innertext]: https://developer.mozilla.org/en-US/docs/Web/API/HTMLElement/innerText
 [textcontent]: https://developer.mozilla.org/en-US/docs/Web/API/Node/textContent
 [innerhtml]: https://developer.mozilla.org/en-US/docs/Web/API/Element/innerHTML
