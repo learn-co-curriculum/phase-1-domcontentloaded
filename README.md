@@ -4,75 +4,113 @@
 
 - Why DOMContentLoaded is important?
 - Set up an event on DOMContentLoaded
-- Reiterate separation of concerns for JavaScript
 
 ## Introduction
 
 An important part of working with JavaScript is ensuring that your code
 runs at the right time. Every now and then, you may have to add some extra
 code to ensure your code doesn't run before the page is ready. There are
-many factors that go into determining the "right time". There are two
+many factors that go into determining the "right time." There are two
 events that represent two important milestones in terms of page load:
 
-1. `DOMContentLoaded` event fires at when your page's DOM is fully parsed
-2. The `load` event fires when a resource and its dependent resources (CSS, JavaScript) have finished loading
+1. The `DOMContentLoaded` event fires when your page's DOM is fully parsed
+2. The `load` event fires when a resource and its dependent resources
+   (CSS, JavaScript) have finished loading
 
 In this lesson, we'll be focusing on `DOMContentLoaded`.
 
-## Why is DOMContentLoaded is Important?
+## Why is DOMContentLoaded Important?
 
-The browser has a built-in way to determine when a page is loaded. The
-`DOMContentLoaded` event is triggered when the page’s DOM is ready--or
-finished loading. This means style and HTML is ready to receive requests
-from JavaScript. You can't bind events to HTML elements that haven't
-rendered yet. As such, we want to perform event binding only _after_
-we're sure the DOM...Content....has.....Loaded.
+The `DOMContentLoaded` event is the browser's built-in way to indicate when a
+page is loaded. It isn't possible to manipulate HTML elements that haven't
+rendered yet, so trying to manipulate the DOM before the page fully loads can
+potentially lead to problems.
+
+We need to make sure to wait until _after_ the `DOMContentLoaded` event is
+triggered to safely execute our code. By creating an event listener, we can keep
+our code from immediately firing when `index.js` is loaded.
+
+## Set Up an Event Listener for DOMContentLoaded
 
 As always, `addEventListener` takes a `String` with the name of the
 event and a _callback function_.
 
 ```js
-document.addEventListener("DOMContentLoaded", domLoaded, false);
-
-function domLoaded(event) {
-  alert("The DOM has loaded");
-}
+document.addEventListener("DOMContentLoaded", function() {
+  console.log("The DOM has loaded");
+});
 ```
 
-## Set Up an Event on DOMContentLoaded
+If you put the above code in `index.js`, 'The DOM has loaded' will not be logged
+immediately. In fact, you can confirm this yourself by putting a second
+`console.log()` _outside_ of the event listener callback:
 
-You'll be coding in `index.js`. In `index.js`, we need to set up a
-`DOMContentLoaded` event in order to detect when our HTML page has
-loaded, and the document is ready to be manipulated. Use the event
-to target the paragraph with `id="text"` and replace the text with
-"This is really cool!"
+```js
+document.addEventListener("DOMContentLoaded", function() {
+  console.log("The DOM has loaded");
+});
 
-Once you have confirmed that this working by viewing the results in
-`index.html`, let's create a wrapper for this function called
-`domContentLoaded`. Next, create a function called `updateDOM` and
-place the code for updating the dome in this block. Your `domContentLoaded`
-function will call `updateDOM()` inside of the `eventListener`.
+console.log(
+  "This console.log() fires when index.js loads - before DOMContentLoaded is triggered"
+);
+```
 
-## Reiterate Separation of Concerns for JavaScript
+## Instructions
 
-We usually want to avoid writing our JavaScript inside our HTML
-files. For the same reasons that we want to separate out our CSS
-from our HTML, we want to separate out our JavaScript from our HTML,
-too. When code is well-separated, individual code can be reused,
-modified, maintained, and debugged easier. To ensure proper load
-order of all of the code, place your external stylesheets in the
-`<head>` of your HTML document and your external JavaScript before the
-losing `<body>` tag. This approach forces the JavaScript to execute only
-after the CSS and HTML body have been loaded. If you are placing stylesheets
-in the header and JavaScript at the end of the HTML document, your DOM will
-load all everything before the `DOMContentLoaded` event is fired.
+Code your solution in `index.js`. First, set up a `DOMContentLoaded`
+event in order to detect when the HTML page has loaded, and the document is
+ready to be manipulated. Use the event's callback function to target the
+paragraph element with `id="text"` and replace the text with "This is really
+cool!"
+
+Test your event in the browser to confirm that it is working.
+
+## DOMContentLoaded Does Not Wait For Stylesheets and Images to Load
+
+It is important to note that the `DOMContentLoaded` event fires once the
+initial HTML document finishes loading, but does not wait for CSS stylesheets or
+images to load. In situations where you need _everything_ to completely load,
+use the `load` event instead.
+
+While both will work, it is often the case that we only need the HTML content to
+fully load in order to execute our JavaScript. Since images can take some time
+to load, using the `load` event means visitors of a webpage may see your webpage
+in its original state for a couple of seconds before any JavaScript fires and
+updates the DOM.
+
+For a comparison of the difference between `DOMContentLoaded` and `loaded`
+events, [check out this example][eventexample].
 
 ## Conclusion
 
-In many cases, you'll want to execute events as soon as a page loads.
-The DOMContentLoaded event is a useful event that can make a big impact
-on the performance of your pages, as well as it'll be useful in a number
-of scenarios for user interaction and content manipulation.
+JavaScript provides use the powerful ability to update webpage content without
+refreshing. We can, for instance, have a page with some basic HTML
+structure and use JavaScript to fill in the content, enabling the possibility of
+dynamic webpages.
+
+This sort of action, however, will only work if the HTML content is actually
+loaded on the page. The `DOMContentLoaded` event ensures that our JavaScript
+code is being executed immediately after the HTML is finished loading.
+
+## Addendum
+
+The `DOMContentLoaded` event is now a widely accepted standard. Modern web
+development, however, provides us with additional choices for setting up when we
+want our JavaScript to execute. For example, HTML5 now has a [`defer`][defer]
+attribute for use in `<script>` tags:
+
+```html
+<script src="index.js" defer></script>
+```
+
+This functions in a similar way to `DOMContentLoaded` - the JavaScript code
+stored in `index.js` will be loaded up but won't execute until the HTML page
+completely loads.
 
 ## Resources
+
+[DOMContentLoaded](https://developer.mozilla.org/en-US/docs/Web/Events/DOMContentLoaded)
 [Running Your Code at the Right Time](https://www.kirupa.com/html5/running_your_code_at_the_right_time.htm)
+
+[eventexample]: http://web.archive.org/web/20150405114023/http://ie.microsoft.com/testdrive/HTML5/DOMContentLoaded/Default.html
+[defer]: https://www.w3schools.com/tags/att_script_defer.asp
