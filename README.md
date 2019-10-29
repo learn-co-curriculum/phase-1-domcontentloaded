@@ -120,3 +120,5 @@ completely loads.
 [innertext]: https://developer.mozilla.org/en-US/docs/Web/API/HTMLElement/innerText
 [textcontent]: https://developer.mozilla.org/en-US/docs/Web/API/Node/textContent
 [innerhtml]: https://developer.mozilla.org/en-US/docs/Web/API/Element/innerHTML
+
+
