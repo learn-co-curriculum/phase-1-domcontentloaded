@@ -81,7 +81,7 @@ to load, using the `load` event means visitors of a webpage may see your webpage
 in its original state for a couple of seconds before any JavaScript fires and
 updates the DOM.
 
-For a comparison of the difference between `DOMContentLoaded` and `loaded`
+For a comparison of the difference between `DOMContentLoaded` and `load`ed
 events, [check out this example][eventexample].
 
 ## Conclusion

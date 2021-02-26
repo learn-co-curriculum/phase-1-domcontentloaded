@@ -4,7 +4,7 @@ describe( "index.js", () => {
         .textContent )
       .to.equal( "JavaScript is so cool. It lets me add text to my page programmatically." );
 
-    let event = document.createEvent( 'Event' );
+    const event = document.createEvent( 'Event' );
     event.initEvent( 'DOMContentLoaded', true, true );
     window.document.dispatchEvent( event );
 
