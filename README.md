@@ -1,4 +1,4 @@
-# Loading JavaScript on Document Load
+# The JavaScript DOMContentLoaded Event
 
 ## Learning Goals
 
