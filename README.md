@@ -64,7 +64,8 @@ manipulated. Use the event's callback function to target the paragraph element
 with `id="text"` and replace the text with "This is really cool!"
 
 _Note:_ Using the [`innerText`][innertext] property to modify DOM element
-content will not work for this lab. Use [`textContent`][textcontent] or [`innerHTML`][innerhtml] instead.
+content will not work for this lab. Use [`textContent`][textcontent] or
+[`innerHTML`][innerhtml] instead.
 
 Test your event in the browser to confirm that it is working.
 
